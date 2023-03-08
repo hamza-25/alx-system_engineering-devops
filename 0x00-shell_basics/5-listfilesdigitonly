@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lanG
+ls -la -n
