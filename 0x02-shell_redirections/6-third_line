@@ -1,2 +1,2 @@
 #!/bin/bash
-echo head -z 3 iacta
+cat head -z 3 iacta
