@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "$PATH:%s" "/action"
+printf "$PATH%s" "/action"
