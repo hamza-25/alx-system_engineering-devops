@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e {a..z}{a..z}"\n"| tail -303 | head -10
