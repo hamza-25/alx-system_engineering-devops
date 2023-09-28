@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Bash script that displays The content of the current directory
+for line in $(ls | cut -d "-" -f 2); do
+	echo "$line"
+done	
