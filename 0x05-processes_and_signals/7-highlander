@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bash script that displays I am invincible when receiving a SIGTERM signal
+while true
+do
+	function handle_sig {
+		echo 'I am invincible!!!'
+	}
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'handle_sig' TERM
+done
