@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Must show all processes, for all users.
+# shellcheck disable=SC2009
+
+ps -auxf | grep bash
