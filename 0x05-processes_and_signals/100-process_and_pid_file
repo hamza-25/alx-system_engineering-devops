@@ -15,8 +15,7 @@ echo $$ >> /var/run/myscript.pid
 while true
 do
 	echo "To infinity and beyond"
-	#echo $$
-	#sleep 2
+	sleep 2
 	trap 'handle_term' TERM
 	trap 'handle_sigint' INT
 	trap 'handle_quit' QUIT
