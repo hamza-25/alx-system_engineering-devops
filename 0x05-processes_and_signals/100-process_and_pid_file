@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Bash script that creat, display and remove
+function handle_term {
+	echo "I hate the kill command"
+}
+function handle_sigint {
+	echo "Y U no love me?!"
+}
+function handle_quit {
+	rm -rf /var/run/myscript.pid
+	exit
+}
+mkdir -p /var/run/
+echo $$ >> /var/run/myscript.pid
+while true
+do
+	echo "To infinity and beyond"
+	#echo $$
+	#sleep 2
+	trap 'handle_term' TERM
+	trap 'handle_sigint' INT
+	trap 'handle_quit' QUIT
+done
