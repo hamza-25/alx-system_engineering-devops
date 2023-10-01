@@ -16,7 +16,7 @@ while true
 do
 	echo "To infinity and beyond"
 	sleep 2
-	trap 'handle_term' TERM
+	trap 'handle_term  && handle_quit' TERM
 	trap 'handle_sigint' INT
 	trap 'handle_quit' QUIT
 done
