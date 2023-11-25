@@ -11,6 +11,6 @@ replace => True,
 file_line { 'Identity file':
 ensure  => present,
 path    => '/etc/ssh/ssh_config',
-linr    => 'IdentityFile ~/.ssh/school',
+line    => 'IdentityFile ~/.ssh/school',
 replace => True,
 }
