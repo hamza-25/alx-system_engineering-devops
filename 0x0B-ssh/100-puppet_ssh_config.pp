@@ -1,4 +1,7 @@
 # Let’s practice using Puppet to make changes to our configuration file
+include stdlib
+
+
 file_line {'no pass':
 ensure => 'present',
 path   => '/etc/ssh/ssh_config',
