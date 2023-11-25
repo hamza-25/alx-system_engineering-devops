@@ -1,4 +1,4 @@
-# Let’s practice using Puppet to make changes to our configuration file
+# Puppet to make changes to our configuration file
 include stdlib
 
 file_line { 'No password':
