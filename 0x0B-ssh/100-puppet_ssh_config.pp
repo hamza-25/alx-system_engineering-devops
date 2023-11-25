@@ -3,13 +3,13 @@ include stdlib
 
 
 file_line { 'No password':
-ensure => present,
+ensure => 'present',
 path   => '/etc/ssh/ssh_config',
 line   => 'PasswordAuthentication no'
 }
 
 file_line { 'Identity file':
-ensure => present,
+ensure => 'present',
 path   => '/etc/ssh/ssh_config',
 linr   => 'IdentityFile ~/.ssh/school'
 }
