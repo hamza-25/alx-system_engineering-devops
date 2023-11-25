@@ -2,14 +2,14 @@
 include stdlib
 
 
-file_line {'no pass':
-ensure => 'present',
+file_line {'No password':
+ensure => present,
 path   => '/etc/ssh/ssh_config',
 line   => 'PasswordAuthentication no'
 }
 
-file_line {'set identity':
-ensure => 'present',
+file_line {'Identity file':
+ensure => present,
 path   => '/etc/ssh/ssh_config',
 linr   => 'IdentityFile ~/.ssh/school'
 }
