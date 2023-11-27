@@ -2,5 +2,5 @@
 # install nginx and serve
 sudo apt -y update
 sudo apt -y install nginx
-sudo su -c echo Hello World! > /var/www/html/index.nginx-debian.html
+sudo su -c echo "Hello World!" > /var/www/html/index.nginx-debian.html
 # ssh ubuntu@100.24.238.196 "sudo apt -y update && sudo apt -y install nginx && sudo su -c 'echo Hello World! > /var/www/html/index.nginx-debian.html'"
