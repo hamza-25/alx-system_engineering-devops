@@ -4,7 +4,7 @@ sudo apt -y update
 sudo apt -y install nginx
 ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-new="server /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}"
+new="location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}"
 old="# include snippets/snakeoil.conf;"
 sed -i "s/'$old'/'$new'" /etc/nginx/sites-available/default
 sudo service nginx restart
