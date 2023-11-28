@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# install nginx and serve
+sudo apt -y update
+sudo apt -y install nginx
+ufw allow 'Nginx HTTP'
+sudo echo "Hello Holberton" > /var/www/html/index.html 
+service ngnix restart
