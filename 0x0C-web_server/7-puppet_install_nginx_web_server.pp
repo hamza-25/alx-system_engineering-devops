@@ -1,3 +1,4 @@
+# installing nginx using puppet
 package {'nginx':
 ensure  => present,
 }
@@ -19,6 +20,11 @@ $cont="server {
 file {'/var/www/html/index.html':
 ensure  => present,
 content => 'Hello World!'
+}
+
+file {'/var/www/html/custome_404.html':
+ensure  => present,
+content => "Ceci n'est pas une page"
 }
 
 file {'/etc/nginx/sites-available/default':
