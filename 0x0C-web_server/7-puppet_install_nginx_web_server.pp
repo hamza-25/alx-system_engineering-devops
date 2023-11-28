@@ -1,6 +1,12 @@
 # installing nginx using puppet
+exec {'update_apt':
+  command => 'sudo apt-get -y update',
+  path    => '/usr/bin',
+}
+
 package {'nginx':
-ensure  => present,
+ensure => present,
+before => File['/var/www/html/index.nginx-debian.html'],
 }
 $cont="server {
 	listen 80 default_server;
@@ -17,7 +23,7 @@ $cont="server {
 	}
 }"
 
-file {'/var/www/html/index.html':
+file {'/var/www/html/index.nginx-debian.html':
 ensure  => present,
 content => 'Hello World!'
 }
@@ -36,6 +42,7 @@ service {'nginx':
 ensure => stopped,
 }
 
-service {'nginx':
-ensure => running,
+exec {'nginx_restart':
+command     => 'sudo service nginx restart',
+refreshonly => true,
 }
