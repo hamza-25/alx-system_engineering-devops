@@ -19,4 +19,4 @@ SERVER_CONF=\
   }
 }"
 sudo su -c "echo -e '$SERVER_CONF' > /etc/nginx/sites-enabled/default"
-service nginx start
+sudo service nginx restart
