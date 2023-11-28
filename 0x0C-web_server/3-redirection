@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install nginx and serve and configure redirect
+# install nginx and serve and configure redirect.
 sudo apt -y update
 sudo apt -y install nginx
 ufw allow 'Nginx HTTP'
