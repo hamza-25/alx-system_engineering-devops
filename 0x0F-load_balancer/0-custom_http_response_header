@@ -3,6 +3,8 @@
 sudo apt -y update
 sudo apt -y install nginx
 ufw allow 'Nginx HTTP'
+f='$'
+l='ri'
 server="server {
         listen 80 default_server;
         listen [::]:80 default_server;
@@ -10,9 +12,9 @@ server="server {
         index index.html index.htm index.nginx-debian.html;
         server_name _;
         location / {
-                try_files $uri $uri/ =404;
+                try_files ${f}r${l} ${f}r${l}/ =404;
                 add_header X-Served-By '03-web-01';
         }
 }"
-sudo echo -e $server > /etc/nginx/sites-available/default
-sudu systemctl restart nginx
+echo -e "$server" > /etc/nginx/sites-available/default
+sudo systemctl restart nginx
