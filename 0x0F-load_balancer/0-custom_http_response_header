@@ -5,7 +5,11 @@ sudo apt -y install nginx
 ufw allow 'Nginx HTTP'
 f='$'
 l='ri'
-server="server {
+server="map \$hostname \$var1 {
+    ~*01\$ web-01;
+    default web-02;
+	}
+	server {
         listen 80 default_server;
         listen [::]:80 default_server;
         root /var/www/html;
@@ -13,7 +17,7 @@ server="server {
         server_name _;
         location / {
                 try_files ${f}r${l} ${f}r${l}/ =404;
-                add_header X-Served-By '03-web-01';
+                add_header X-Served-By $var1;
         }
 }"
 echo -e "$server" > /etc/nginx/sites-available/default
