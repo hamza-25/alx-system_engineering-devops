@@ -4,11 +4,17 @@ sudo apt-get update
 sudo apt-get install haproxy -y
 
 echo "
-backend my_backend
-	listen load_balancer
+frontend myfrontend
 	bind *:80
+	mode http
+        default_backend mybackend
+backend mybackend
 	balance roundrobin
 	server 367979-web-01 192.168.1.1:80 check
 	server 367979-web-02 192.168.1.2:80 check
 " >> /etc/haproxy/haproxy.cfg
-service haproxy start
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	service haproxy start
+else
+	service haproxy restart
+fi
