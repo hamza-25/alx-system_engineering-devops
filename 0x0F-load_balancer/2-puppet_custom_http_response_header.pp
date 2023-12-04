@@ -1,24 +1,23 @@
 # automate the task of creating a custom HTTP header response
-$srv = "
-map \$hostname \$var1 {
-    ~*01\$ web-01;
-    default web-02;
+exec {'update':
+provider => shell,
+command  => 'sudo apt -y update'
 }
 
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name _;
-    location / {
-        try_files \$uri \$uri/ =404;
-        add_header X-Served-By \$var1;
-    }
+exec {'install_nginx':
+provider => shell,
+command  => 'sudo apt -y install nginx'
 }
-"
 
-file { '/etc/nginx/sites-available/default':
-    ensure => present,
-    content => "$srv",
+exec { 'add_header':
+  provider    => shell,
+  environment => ["MYNAME=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\default;
+/include \/etc\/nginx\/sites-enabled\/\default;\n\tadd_header X-Served-By \"$MYNAME\";/" /etc/nginx/nginx.conf',
+  before      => Exec['restart Nginx'],
+}
+
+exec { 'restart Nginx':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
