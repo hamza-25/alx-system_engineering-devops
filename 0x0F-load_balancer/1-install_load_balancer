@@ -3,11 +3,12 @@
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 
-cfg="frontend myfrontend\n\tbind *:80\n\tmode http\n\t\
-	default_backend mybackend\nbackend mybackend\n\t\
-	mode http\n\tbalance roundrobin\n\tserver server1 192.168.1.1:80 check\
-	server server2 192.168.1.2:80 check"
-
-echo -e "$cfg" >> /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
-sudo ufw allow 80
+echo "
+backend my_backend
+	listen load_balancer
+	bind *:80
+	balance roundrobin
+	server 367979-web-01 192.168.1.1:80 check
+	server 367979-web-02 192.168.1.2:80 check
+" >> /etc/haproxy/haproxy.cfg
+sudo systemctl start haproxy
