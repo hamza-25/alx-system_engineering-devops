@@ -22,5 +22,5 @@ server {
                 internal;
         }
 }"
-echo -e "$server_cnf" > /etc/nginx/sites-available/default
+echo "$server_cnf" > /etc/nginx/sites-available/default
 sudo systemctl restart nginx
