@@ -3,6 +3,9 @@
 sudo apt -y update
 sudo apt -y install nginx
 ufw allow 'Nginx HTTP'
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custome_404.html
 f='$'
 l='ri'
 server="
@@ -15,6 +18,13 @@ server {
         location / {
                 try_files ${f}r${l} ${f}r${l}/ =404;
                 add_header X-Served-By $HOSTNAME;
+        }
+        location /redirect_me {
+                return 301 http://www.youtube.com/;
+        }
+        error_page 404 /custome_404.html;
+        location /404 {
+                internal;
         }
 }"
 echo -e "$server" > /etc/nginx/sites-available/default
