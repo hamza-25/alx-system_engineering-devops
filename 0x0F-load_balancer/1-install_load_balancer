@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 # configure web-02 and update web-01
-# sudo apt-get update
-# sudo apt-get install haproxy -y
-
+balancer="\
+frontend haproxy_balancer
+    bind *:80
+    mode http
+    default_backend webservers
+    
+backend webservers
+    balance roundrobin
+    server 26071-web-01 44.210.150.159:80 check
+    server 26071-web-02 35.173.47.15:80 check
+"
+# Update packages
 apt-get -y update
 apt-get -y upgrade
 
@@ -14,15 +23,5 @@ apt-get -y update
 # Install HAProxy
 apt-get -y install haproxy
 cp -a /etc/haproxy/haproxy.cfg{,.orig}
-
-echo "
-frontend myfrontend
-	bind *:80
-	mode http
-        default_backend mybackend
-backend mybackend
-	balance roundrobin
-	server 367979-web-01 192.168.1.1:80 check
-	server 367979-web-02 192.168.1.2:80 check
-" >> /etc/haproxy/haproxy.cfg
-sudo service haproxy restart
+echo "$balancer" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
