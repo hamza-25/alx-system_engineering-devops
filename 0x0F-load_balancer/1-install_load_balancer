@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 # configure web-02 and update web-01
-sudo apt-get update
-sudo apt-get install haproxy -y
+# sudo apt-get update
+# sudo apt-get install haproxy -y
 
-sudo echo "
+apt-get -y update
+apt-get -y upgrade
+
+# Add HAProxy PPA
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.5
+apt-get -y update
+
+# Install HAProxy
+apt-get -y install haproxy
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
+
+echo "
 frontend myfrontend
 	bind *:80
 	mode http
