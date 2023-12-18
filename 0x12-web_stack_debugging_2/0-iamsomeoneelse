@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script should run the whoami command under the user passed as an argument
+if [ "$#" -gt 1 ]; then
+	exit 1
+fi
+sudo -u "$1" whoami
