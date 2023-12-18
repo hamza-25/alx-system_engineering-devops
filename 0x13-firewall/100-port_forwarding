@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# Firewalls can not only filter requests, they can also forward them.
 *filter
 :ufw-before-input - [0:0]
 :ufw-before-output - [0:0]
