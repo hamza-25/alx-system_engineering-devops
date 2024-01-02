@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
 using this REST API, for a given employee ID, returns information about
+ARGS:
+    fisrt arg: is the id of the employee
 """
 import requests
 from sys import argv
