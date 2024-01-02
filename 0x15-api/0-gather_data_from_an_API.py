@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""using this REST API, for a given employee ID, returns information about"""
 import requests
 from sys import argv
 import json
@@ -14,7 +15,7 @@ if response_user.status_code == 200 and response_todo.status_code == 200:
 
     completed = 0
     total_task = 0
-    title_completed_task = []    
+    title_completed_task = []
     response_todo = response_todo.json()
     for do in response_todo:
         if do['userId'] == int(argv[1]):
