@@ -30,4 +30,4 @@ if __name__ == "__main__":
         print(f'Employee {emp_name} is done '
               f'with tasks({completed}/{total_task}):')
         for title in title_completed_task:
-            print(f'\t{title}')
+            print(f'\t {title}')
