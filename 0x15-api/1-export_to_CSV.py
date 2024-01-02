@@ -35,6 +35,6 @@ if __name__ == "__main__":
                 matrix_rows.append([sys.argv[1], username, "True", title])
             else:
                 matrix_rows.append([sys.argv[1], username, "False", title])
-        with open('USER_ID.csv', "w") as file:
+        with open(f'{sys.argv[1]}.csv', "w") as file:
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
             writer.writerows(matrix_rows)
