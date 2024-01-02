@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""using this REST API, for a given employee ID, returns information about"""
+"""
+using this REST API, for a given employee ID, returns information about
+"""
 import requests
 from sys import argv
 import json
