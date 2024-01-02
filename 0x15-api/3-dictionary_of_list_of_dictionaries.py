@@ -25,5 +25,6 @@ if __name__ == "__main__":
                 new_list.append(new_dict)
                 all_dict[user['id']] = new_list
                 new_dict = {}
+        new_list = []
     with open('todo_all_employees.json', 'w') as js_file:
         json.dump(all_dict, js_file)
