@@ -1,12 +1,13 @@
 #!/usr/bin/python3
+import requests
+from sys import argv
+import json
+
 """
 using this REST API, for a given employee ID, returns information about
 ARGS:
     fisrt arg: is the id of the employee
 """
-import requests
-from sys import argv
-import json
 
 response_user = requests.get('https://jsonplaceholder.typicode.com/users')
 response_todo = requests.get('https://jsonplaceholder.typicode.com/todos')
