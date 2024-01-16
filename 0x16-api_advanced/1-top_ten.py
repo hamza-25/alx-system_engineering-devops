@@ -9,7 +9,7 @@ def top_ten(subreddit):
         return (0)
     url = f'https://www.reddit.com/r/{subreddit}/hot/.json'
     headers = {'User-Agent': 'hamzaApp/1.0 by hamza-25'}
-    params = {'limit': 10}
+    params = {'limit': 9}
     response = requests.get(url, headers=headers,
                             params=params, allow_redirects=False)
     if response.status_code == 404:
