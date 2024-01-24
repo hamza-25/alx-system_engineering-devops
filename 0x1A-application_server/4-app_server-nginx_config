@@ -1,0 +1,38 @@
+server {
+        listen 80;
+        listen [::]:80;
+        server_name www.myhint.tech myhint.tech;
+        add_header X-Served-By 367979-web-01;
+        root   /var/www/html;
+        index  index.html index.htm;
+        location /hbnb_static {
+                alias /data/web_static/current;
+                index index.html index.htm;
+        }
+        location /airbnb-dynamic/number_odd_or_even {
+                proxy_pass http://localhost:6001/number_odd_or_even;
+        }
+	location /api {
+                proxy_pass http://localhost:6002/api;
+        }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+    server_name www.myhint.tech myhint.tech;
+    add_header X-Served-By 367979-web-01;
+    root /var/www/html;
+    index index.html index.htm;
+
+    	location /hbnb_static {
+        	alias /data/web_static/current;
+        	index index.html index.htm;
+    	}
+        location /airbnb-dynamic/number_odd_or_even {
+                proxy_pass http://localhost:6001/number_odd_or_even;
+        }
+	location /api {
+                proxy_pass http://localhost:6002/api;
+        }
+}
