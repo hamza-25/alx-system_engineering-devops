@@ -10,7 +10,7 @@ server {
                 index index.html index.htm;
         }
         location /airbnb-onepage {
-                proxy_pass http://localhost:6000/airbnb-onepage/;
+                proxy_pass http://localhost:5000/airbnb-onepage/;
         }
 }
 
@@ -27,6 +27,6 @@ server {
         index index.html index.htm;
     }
         location /airbnb-onepage {
-                proxy_pass http://localhost:6000/airbnb-onepage/;
+                proxy_pass http://localhost:5000/airbnb-onepage/;
         }
 }
