@@ -10,16 +10,16 @@ server {
                 index index.html index.htm;
         }
         location /airbnb-dynamic/number_odd_or_even {
-                proxy_pass http://localhost:6001/number_odd_or_even;
+                proxy_pass http://localhost:5001/number_odd_or_even;
         }
 	location /api {
-                proxy_pass http://localhost:6002/api;
+                proxy_pass http://localhost:5002/api;
         }
 	location / {
-                proxy_pass http://localhost:6003/2-hbnb;
+                proxy_pass http://localhost:5003/2-hbnb;
         }
         location /static {
-                proxy_pass http://localhost:6003;
+                proxy_pass http://localhost:5003;
         }
 }
 
@@ -36,15 +36,15 @@ server {
         	index index.html index.htm;
     	}
         location /airbnb-dynamic/number_odd_or_even {
-                proxy_pass http://localhost:6001/number_odd_or_even;
+                proxy_pass http://localhost:5001/number_odd_or_even;
         }
 	location /api {
-                proxy_pass http://localhost:6002/api;
+                proxy_pass http://localhost:5002/api;
         }
 	location / {
-                proxy_pass http://localhost:6003/2-hbnb;
+                proxy_pass http://localhost:5003/2-hbnb;
         }
         location /static {
-                proxy_pass http://localhost:6003;
+                proxy_pass http://localhost:5003;
         }
 }
